@@ -51,9 +51,42 @@ Paiement paiement = paiementRepository.findByIdP(p);
         }
         return paiement;
     }
-
-
+    
     @Override
+    public Paiement AnnulerPaiementFacture(List<Facture> fact) {
+        Paiement p = new Paiement();
+boolean test=false;
+        for (Facture f : fact) {
+            p = f.getPaiement();
+
+            if (factureService.chercherPaiementFacture(p) > 1) {
+               // sessionService.annulerSession(f.getMontant(), p.getEncaissement().getSession().getNumS());
+                Encaissement encaissement = encaissementService.ajouterEncaissement(new Encaissement(null, new Date(),
+                        f.getMontant(), "annuler", null, p.getEncaissement().getSession()));
+                paiementRepository.save(
+                        new Paiement(null, new Date(), p.getModePaiement(), "annuler", encaissement, null, null, null));
+                // encaissement.setEtat('annulé');
+             //   factureService.annulerPaiementFacture(f.getReferenceFact());
+                test=true;
+            }
+          
+
+          
+            factureService.annulerPaiementFacture(f.getReferenceFact());
+
+            sessionService.annulerSession(f.getMontant(), p.getEncaissement().getSession().getNumS());  
+        }
+        if(test==false){
+
+            paiementRepository.annulerPaiement(p.getIdP());
+            encaissementService.annulerEncaissement(p.getEncaissement().getIdE());
+        }
+
+
+        return p;
+    }
+
+  /*  @Override
     public Paiement AnnulerPaiementFacture(List<Facture> fact) {
         Paiement p = new Paiement();
       
@@ -68,7 +101,7 @@ Paiement paiement = paiementRepository.findByIdP(p);
         encaissementService.annulerEncaissement(p.getEncaissement().getIdE());
     
 return p;
-    }
+    }*/
 
 
     @Override
@@ -92,17 +125,17 @@ return paie;
     }
 
     @Override
-    public Paiement paiementFactureCaissier(List<Facture> factures, Long p) {
+    public Paiement paiementFactureCaissier(List<Facture> factures) {
 
-        Paiement paiement = paiementRepository.findByIdP(p);
+        Paiement paiement = new Paiement();
 
         for (Facture f : factures) {
-
+            paiement = f.getPaiement();
             factureService.modifierFacture(paiement, f.getReferenceFact());
 
         }
 
-return paiement;
+        return paiement;
     }
 
   

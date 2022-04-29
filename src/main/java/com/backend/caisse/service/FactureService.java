@@ -16,4 +16,7 @@ public interface FactureService {
     void modifierFacture(Paiement paiement, Long ref);
 
     void annulerPaiementFacture(Long referenceFact);
+    
+    int chercherPaiementFacture(Paiement p);
+
 }

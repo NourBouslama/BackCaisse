@@ -8,6 +8,7 @@ import com.backend.caisse.entities.SessionCaisse;
 
 public interface SessionService {
 
+ 
     SessionCaisse CreerSessionCaisse(SessionCaisse p);
 
     SessionCaisse fermerSessionParNum(Long nums);
@@ -30,7 +31,7 @@ public interface SessionService {
 
     SessionCaisse chercherParCaissierEtEtat(Long id,String etat);
 
-    void modifierSessionParMontantEtNbFacture(double d, Long nbF, Long numc);
+    SessionCaisse modifierSessionParMontantEtNbFacture(SessionCaisse sessionCaisse);
 
     void annulerSession(double mt, Long numS);
 

@@ -41,4 +41,9 @@ public class FactureServiceImpl implements FactureService {
         factureRepository.updateFactureAnnuler(referenceFact);
         
     }
+
+    @Override
+    public int chercherPaiementFacture(Paiement p) {
+        return factureRepository.chercherPaiementFacture(p.getIdP());
+    }
 }

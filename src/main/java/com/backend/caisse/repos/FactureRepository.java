@@ -30,5 +30,8 @@ public interface FactureRepository extends JpaRepository<Facture, Long> {
     @Query("update Facture f set f.etat='impayé', f.paiement=null where f.referenceFact=?1")
     void updateFactureAnnuler(long ff);
 
+    @Query("SELECT COUNT(f.IdF) from Facture f  where f.paiement.idP= ?1")
+    int chercherPaiementFacture(Long p);
+
     
 }

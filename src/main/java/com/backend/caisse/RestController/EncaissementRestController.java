@@ -60,6 +60,15 @@ public class EncaissementRestController {
         }
     }
 
+    @RequestMapping(path = "/listerParNumSEtEtatEtPaiementMode/{nums}/{etat}/{mode}",method = RequestMethod.GET)
+    public ResponseEntity<Object> listerEncaissementParNumsEtatEtPaiementMode(@PathVariable("nums") Long nums,@PathVariable("etat") String etat,@PathVariable("mode") String mode) {
+        try{
+            return new ResponseEntity<Object>(encaissementService.listerEncaissementParNumsEtatEtPaiementMode(nums,etat,mode),HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<Object>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @RequestMapping(value="/ajouterEncaissement",method = RequestMethod.POST)
     public ResponseEntity<Object> ajouterEncaissement(@RequestBody Encaissement encaissement) {
         try{

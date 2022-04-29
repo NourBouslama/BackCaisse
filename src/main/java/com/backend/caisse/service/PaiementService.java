@@ -15,5 +15,5 @@ public interface PaiementService {
 
   Paiement ajouterPaiement(Paiement p);
 
-  Paiement paiementFactureCaissier(List<Facture> factures,Long idP);
+  Paiement paiementFactureCaissier(List<Facture> factures);
 }

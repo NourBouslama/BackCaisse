@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CaissierRepository extends JpaRepository<Caissier, Long> {
 	@Transactional
 	@Modifying
-	@Query("update Caissier p set p.etat = 'activé' where p.idU = ?1")
+	@Query("update Caissier p set p.etat ='activé' where p.idU = ?1")
 	void updateEtatAct(long idU);
 
 	@Transactional

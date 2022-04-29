@@ -140,4 +140,14 @@ public class SessionRestController {
         
     }
 
+    @RequestMapping(value = "/modifierSessionCaisse",method = RequestMethod.PUT)
+    public ResponseEntity<Object> ModifierSessionCaisse(@RequestBody SessionCaisse sessionCaisse) {
+        try{
+            return new ResponseEntity<Object>(sessionService.modifierSessionParMontantEtNbFacture(sessionCaisse),HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<Object>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
+    }
+
 }

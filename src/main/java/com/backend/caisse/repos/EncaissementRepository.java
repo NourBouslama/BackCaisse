@@ -35,4 +35,6 @@ public interface EncaissementRepository extends JpaRepository<Encaissement, Long
   List<Encaissement> findBySessionNumS(Long num);
 
   List<Encaissement>findByEtatAndPaiementModePaiement(String e, String m);
+
+  List<Encaissement>findBySessionNumSAndEtatAndPaiementModePaiement(Long nums,String e, String m);
 }

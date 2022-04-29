@@ -13,6 +13,8 @@ public interface EncaissementService {
 
     List<Encaissement> listerEncaissementsParSession(Long nums);
 
+    List<Encaissement> listerEncaissementParNumsEtatEtPaiementMode(Long nums,String e,String m);
+
     List<Encaissement> listerEncaissementParEtatEtPaiementMode(String e,String m);
 
     Encaissement ajouterEncaissement(Encaissement encaissement);

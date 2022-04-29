@@ -1,17 +1,12 @@
 package com.backend.caisse.entities;
 
-
-
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,20 +22,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class ModePaiement {
+public class Poste {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long code;
-    private String libelle;
-    private String etatM="activé";
+    private Long idP;
+    private String poste;
     
     @JsonIgnore
-    @ManyToMany(mappedBy = "modes")
-    private List<Caisse> caisses;
+    @ManyToMany(mappedBy = "postes")
+    private List<Utilisateur> utilisateurs;
    
- 
-
-  
-
     
 }

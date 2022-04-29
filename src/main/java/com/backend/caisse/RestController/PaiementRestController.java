@@ -44,11 +44,11 @@ public class PaiementRestController {
         }
     }
 
-    @RequestMapping(path = "/payer/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Object> PaiementFactures(@RequestBody List<Facture> factures, @PathVariable("id") Long idP) {
+    @RequestMapping(path = "/payer", method = RequestMethod.PUT)
+    public ResponseEntity<Object> PaiementFactures(@RequestBody List<Facture> factures) {
 
         try {
-            return new ResponseEntity<Object>(paiementService.paiementFactureCaissier(factures, idP), HttpStatus.OK);
+            return new ResponseEntity<Object>(paiementService.paiementFactureCaissier(factures), HttpStatus.OK);
         } catch (Exception e) {
 
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

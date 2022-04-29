@@ -91,5 +91,9 @@ public class CaissierRestController {
             return new ResponseEntity<Object>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+   /* @RequestMapping(value = "/activerCaissier/{matricule}", method = RequestMethod.PUT)
+    public void activerCaissier(@PathVariable("matricule") Long mat) {
+        CaissierService.activerCaissierByMat(mat);
+    }*/
 
 }

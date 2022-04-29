@@ -87,9 +87,9 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public void modifierSessionParMontantEtNbFacture(double d, Long nbF, Long numc) {
-        SessionRepository.updateSessionMontantAndNbFacture(d,nbF,numc); 
-        
+    public SessionCaisse modifierSessionParMontantEtNbFacture(SessionCaisse sessionCaisse) {
+
+      return SessionRepository.save(sessionCaisse);
     }
 
     @Override

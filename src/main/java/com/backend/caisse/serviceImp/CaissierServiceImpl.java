@@ -38,7 +38,7 @@ public class CaissierServiceImpl implements CaissierService {
     public Caissier activerCaissierByMat(Long id) {
 
         caissierRepository.updateEtatAct(id);
-        return caissierRepository.findByIdU(id);
+      return caissierRepository.findByIdU(id);
     }
 
     @Override

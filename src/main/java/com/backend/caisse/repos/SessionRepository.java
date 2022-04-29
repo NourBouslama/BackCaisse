@@ -42,15 +42,13 @@ public interface SessionRepository extends JpaRepository<SessionCaisse, Long> {
 	List<SessionCaisse>findByEncaissementsEtat(String etat);
 
 	SessionCaisse findByNumS(Long nums);
-
 	@Transactional
 	@Modifying
 	@Query("update SessionCaisse p set p.montantSession =p.montantSession + ?1 , p.nbFacture=?2 where p.numS = ?3")
-	void updateSessionMontantAndNbFacture(double mt,Long nbF, Long numc);
+	void updateSessionMontantAndNbFacture(double mt, Long nbF, Long numc);
 
 	@Transactional
 	@Modifying
 	@Query("update SessionCaisse p set p.montantSession =p.montantSession - ?1 , p.nbFacture= p.nbFacture -1 where p.numS = ?2")
-	void AnnulerSessionMontantAndNbFacture(double mt, Long numc);
-
+	void AnnulerSessionMontantAndNbFacture(double mt, Long nums);
 }

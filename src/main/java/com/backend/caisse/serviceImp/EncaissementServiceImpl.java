@@ -44,10 +44,11 @@ public class EncaissementServiceImpl implements EncaissementService{
         return encaissementRepository.findByEtatAndSessionNumS(etat, nums);
     }
 
+  
     @Override
     public Encaissement ajouterEncaissement(Encaissement encaissement) {
         SessionCaisse sessionCaisse=encaissement.getSession();
-        sessionService.modifierSessionParMontantEtNbFacture(encaissement.getMontantE(),sessionCaisse.getNbFacture(),sessionCaisse.getNumS());
+     //   sessionService.modifierSessionParMontantEtNbFacture(encaissement.getMontantE(),sessionCaisse.getNbFacture(),sessionCaisse.getNumS());
 
        return encaissementRepository.save(encaissement);
     }
@@ -56,6 +57,12 @@ public class EncaissementServiceImpl implements EncaissementService{
     public void annulerEncaissement(Long idE) {
         encaissementRepository.EncaissementEtatAnnuler(idE);
         
+    }
+
+    @Override
+    public List<Encaissement> listerEncaissementParNumsEtatEtPaiementMode(Long nums, String e, String m) {
+        // TODO Auto-generated method stub
+        return encaissementRepository.findBySessionNumSAndEtatAndPaiementModePaiement(nums, e, m);
     }
     
 }
